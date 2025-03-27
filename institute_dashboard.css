@@ -1,0 +1,640 @@
+/* ======================================================================
+   General Styles
+   ====================================================================== */
+   body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+  }
+  
+  /* ======================================================================
+     Dashboard Container & Layout
+     ====================================================================== */
+  .dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* ======================================================================
+     Sidebar Menu
+     ====================================================================== */
+  .menu-bar {
+    width: 250px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .menu-bar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .menu-bar .logo i {
+    margin-right: 10px;
+  }
+  
+  .menu-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-bar ul li {
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .menu-bar ul li:hover {
+    background: #3d5a6c;
+  }
+  
+  .menu-bar ul li i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .menu-bar ul li span {
+    font-size: 1rem;
+  }
+  
+  .menu-bar .sign-out {
+    margin-top: 20px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    background: #c0392b;
+    transition: background 0.3s;
+  }
+  
+  .menu-bar .sign-out:hover {
+    background: #e74c3c;
+  }
+  
+  .menu-bar .sign-out i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  /* ======================================================================
+     Main Content Area & Animation
+     ====================================================================== */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    overflow-y: auto;
+  }
+  
+  .content.hidden {
+    display: none;
+  }
+  
+  .content:not(.hidden) {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* ======================================================================
+     Responsive Design
+     ====================================================================== */
+  @media (max-width: 768px) {
+    .menu-bar {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+  
+    .menu-bar ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .menu-bar ul li {
+      margin: 5px;
+      flex: 1 1 calc(50% - 10px);
+    }
+  
+    .menu-bar .logo {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .menu-bar .sign-out {
+      flex-basis: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .menu-bar ul li {
+      flex: 1 1 100%; /* Stack items vertically on very small screens */
+    }
+  
+    #challenge-cards {
+      grid-template-columns: 1fr; /* Single column on small screens */
+    }
+  }
+  
+  /* ======================================================================
+     Request Box Styling (Notifications)
+     ====================================================================== */
+  .request-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+  }
+  
+  .request-box h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  #request-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #request-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #request-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .request-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .request-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+  
+  .request-actions .accept-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .request-actions .accept-btn:hover {
+    background-color: #218838;
+  }
+  
+  .request-actions .reject-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .request-actions .reject-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* ======================================================================
+     Challenge Form & Download Section Styling
+     ====================================================================== */
+  .challenge-form,
+  .download-section {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 20px auto;
+  }
+  
+  .challenge-form h3,
+  .download-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  input,
+  textarea,
+  select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #28a745;
+    outline: none;
+  }
+  
+  /* Buttons */
+  .btn-submit {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .btn-submit:hover {
+    background-color: #218838;
+  }
+  
+  .btn-download {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .btn-download:hover {
+    background-color: #0069d9;
+  }
+  
+  /* ======================================================================
+     Popup Modal Styling
+     ====================================================================== */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup.hidden {
+    display: none;
+  }
+  
+  .popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-popup {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+  }
+  
+  .btn-popup:hover {
+    background-color: #218838;
+  }
+  
+  /* ======================================================================
+     Faculty Cards Styling
+     ====================================================================== */
+  .faculty-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .faculty-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .faculty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .profile-photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Profile Icon on Faculty Cards */
+  .profile-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .profile-icon:hover {
+    color: #2980b9;
+  }
+  
+  .faculty-details {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .faculty-details h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .faculty-details p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .faculty-details p strong {
+    color: #333;
+  }
+  
+  /* ======================================================================
+     Student Cards Styling
+     ====================================================================== */
+  .student-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .student-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .student-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .student-photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .student-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+  }
+  
+  .student-details {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .student-details h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .student-details p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .student-details p strong {
+    color: #333;
+  }
+  
+  /* Profile Icon on Student Cards */
+  .profile-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .profile-icon:hover {
+    color: #2980b9;
+  }
+  
+  /* ======================================================================
+     Branch Cards Styling
+     ====================================================================== */
+  .branch-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .branch-card {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .branch-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #2980b9, #3498db);
+  }
+  
+  .branch-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .branch-card:hover .branch-icon {
+    transform: scale(1.2);
+  }
+  
+  .branch-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* ======================================================================
+     Profile Section Styling
+     ====================================================================== */
+  .profile-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+  }
+  
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-details {
+    text-align: center;
+  }
+  
+  .profile-details h3 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #2c3e50;
+  }
+  
+  .profile-details p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* ======================================================================
+     New Additions: Section Header & Filter for Student Info
+     ====================================================================== */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .student-count {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .filter-section select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

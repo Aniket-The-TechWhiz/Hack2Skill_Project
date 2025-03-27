@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Institute Official Webpage</title>
+  <!-- Firebase Libraries First -->
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-database-compat.js"></script>
+  
+
+  <link rel="stylesheet" href="first_page.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Institute Name</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <button id="loginBtn" class="login-btn">Login</button>
+    </div>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Welcome to the Institute</h1>
+    <p>Leading professional institute for excellence in education.</p>
+  </header>
+
+  <!-- Login Modal Popup -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <!-- Toggle Tabs for Login Type -->
+      <div class="toggle-container">
+        <button id="studentTab" class="tab active">Student</button>
+        <button id="facultyTab" class="tab">Faculty</button>
+      </div>
+      
+      <!-- Student Login Form -->
+      <div id="studentForm" class="form-container active">
+        <form>
+          <label for="prn">PRN Number</label>
+          <input type="text" id="prn" placeholder="Enter PRN Number" required>
+
+          <label for="studentPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="studentPassword" placeholder="Enter Password" required>
+            <span class="toggle-password" id="toggleStudentPassword"></span>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      
+      <!-- Faculty Login Form -->
+      <div id="facultyForm" class="form-container">
+        <form>
+          <label for="facultyId">Faculty ID</label>
+          <input type="text" id="facultyId" placeholder="Enter Faculty ID" required>
+
+          <label for="facultyPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="facultyPassword" placeholder="Enter Password" required>
+            <span class="toggle-password" id="toggleFacultyPassword"></span>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Institute Name. All rights reserved.</p>
+  </footer>
+
+  <!-- Include your custom script only once, at the end of the body -->
+  <script src="first_page.js"></script>
+</body>
+</html>

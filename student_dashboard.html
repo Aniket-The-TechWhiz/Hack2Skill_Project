@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeMaster - Student Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="student_dashboard.css">
+</head>
+<body>
+  <!-- Hamburger Menu -->
+  <div class="hamburger" onclick="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Side Navigation -->
+  <nav class="side-nav" id="sideNav">
+    <div class="user-profile">
+        <img src="user.png" alt="Profile" class="avatar">
+        <h3 class="username">CodeMaster123</h3>
+        <p>Level 25 Developer</p>
+      </div>
+      
+    <ul class="nav-links">
+      <li class="active" onclick="showSection(event, 'dashboard')">
+          <i class="fas fa-home"></i> Dashboard
+      </li>
+      <li onclick="showSection(event, 'programming-languages')">
+          <i class="fas fa-code"></i> Challenges
+      </li>
+      <li onclick="showSection(event, 'progress')">
+          <i class="fas fa-chart-line"></i> Progress
+      </li>
+      <li onclick="showSection(event, 'leaderboard')">
+          <i class="fas fa-trophy"></i> Leaderboard
+      </li>
+      <li onclick="showSection(event, 'profile')">
+          <i class="fas fa-user"></i> Profile
+      </li>
+      <!-- Logout Button -->
+      <li onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="content-section active">
+          <div class="dashboard-header">
+              <div class="welcome-message">
+                  <h1>Welcome Back, <span class="username">CodeMaster123</span>! 🚀</h1>
+                  <p class="motivational-text">"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie</p>
+              </div>
+              <div class="level-container">
+                  <div class="radial-progress" style="--progress: 65">
+                      <div class="level-number">15</div>
+                      <span>Level</span>
+                  </div>
+              </div>
+          </div>
+          <div class="dashboard-grid">
+              <!-- Progress Card -->
+              <div class="dashboard-card progress-card">
+                  <h3><i class="fas fa-rocket"></i> Learning Trajectory</h3>
+                  <div class="progress-graph">
+                      <!-- Graph lines are created dynamically based on the languages in the database -->
+                  </div>
+              </div>
+              <!-- Daily Goals Card -->
+              <div class="dashboard-card goals-card">
+                  <h3><i class="fas fa-bullseye"></i> Daily Goals</h3>
+                  <div class="goal-meter">
+                      <div class="meter-progress">
+                          <div class="meter-text"></div>
+                      </div>
+                  </div>
+                  <div class="goal-stats">
+                      <div class="goal-stat" id="daily-challenges">
+                          <!-- e.g.: 2/4 Challenges -->
+                      </div>
+                      <div class="goal-stat" id="daily-hours">
+                          <!-- e.g.: 1h optimized -->
+                      </div>
+                  </div>
+              </div>
+              <!-- Coding Activity Card (Weekly Tracker) -->
+              <div class="dashboard-card activity-card">
+                  <h3><i class="fas fa-calendar-alt"></i> Coding Activity (Mon-Sat)</h3>
+                  <div class="heatmap">
+                      <div class="heatmap-grid">
+                          <!-- Day cells are created/updated dynamically -->
+                      </div>
+                  </div>
+              </div>
+              <!-- Quick Actions Card -->
+              <div class="dashboard-card quick-actions">
+                  <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                  <div class="action-buttons">
+                      <button class="action-btn challenge-btn" onclick="startChallenge()">
+                          <i class="fas fa-plus"></i> New Challenge
+                      </button>
+                      <button class="action-btn review-btn">
+                          <i class="fas fa-book-open"></i> Review Progress
+                      </button>
+                      <button class="action-btn friends-btn">
+                          <i class="fas fa-users"></i> Compare Friends
+                      </button>
+                  </div>
+              </div>
+              <!-- Achievements Card -->
+              <div class="dashboard-card achievements-card">
+                  <h3><i class="fas fa-trophy"></i> Recent Achievements</h3>
+                  <div class="achievements-scroll">
+                      <div class="achievement-badge">
+                          <div class="badge-icon gold">
+                              <i class="fas fa-infinity"></i>
+                          </div>
+                          <span>7-Day Streak</span>
+                      </div>
+                      <div class="achievement-badge">
+                          <div class="badge-icon silver">
+                              <i class="fas fa-lightning-bolt"></i>
+                          </div>
+                          <span>Speed Demon</span>
+                      </div>
+                      <div class="achievement-badge">
+                          <div class="badge-icon bronze">
+                              <i class="fas fa-code"></i>
+                          </div>
+                          <span>100 Problems Solved</span>
+                      </div>
+                  </div>
+              </div>
+              <!-- Weekly Stats Card -->
+              <div class="dashboard-card stats-card">
+                  <h3><i class="fas fa-chart-bar"></i> Weekly Stats</h3>
+                  <div class="stats-grid">
+                      <div class="stat-item">
+                          <i class="fas fa-code"></i>
+                          <div class="stat-info">
+                              <h4>Lines Written</h4>
+                              <p id="stat-lines">0</p>
+                          </div>
+                      </div>
+                      <div class="stat-item">
+                          <i class="fas fa-trophy"></i>
+                          <div class="stat-info">
+                              <h4>Challenges Solved</h4>
+                              <p id="stat-challenges">0</p>
+                          </div>
+                      </div>
+                      <div class="stat-item">
+                          <i class="fas fa-clock"></i>
+                          <div class="stat-info">
+                              <h4>Hours Optimized</h4>
+                              <p id="stat-hours">0</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Programming Languages Section (Dynamically Generated) -->
+      <section id="programming-languages" class="content-section hidden">
+          <h2><i class="fas fa-code"></i> Programming Languages</h2>
+          <div class="language-cards" id="language-cards">
+            <!-- Dynamic language cards will be generated here -->
+          </div>
+      </section>
+
+      <!-- Challenges Section -->
+      <section id="challenges-view" class="content-section hidden">
+          <button id="back-btn" onclick="goBackToLanguages()">← Back to Languages</button>
+          <h2 id="challenge-title">Challenges</h2>
+          <div id="challenges-container" class="challenges-container"></div>
+      </section>
+
+      <!-- Coding Section -->
+<section id="coding-section" class="content-section hidden">
+    <button id="coding-back-btn" onclick="goBackToChallenges()">← Back to Challenges</button>
+    <div class="question-section">
+        <h2 id="question-title">Selected Challenge</h2>
+        <div class="problem-description">
+            <p id="code-description">Challenge details will appear here.</p>
+            <div class="io-section">
+                <div class="input-example">
+                    <h4>Input Example:</h4>
+                    <pre id="code-input">Input will appear here.</pre>
+                </div>
+                <div class="output-example">
+                    <h4>Output Example:</h4>
+                    <pre id="code-output">Output: Expected output text here</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="code-editor">
+        <div class="editor-header">
+            <span>solution.py</span>
+            <div class="editor-controls">
+                <i class="fas fa-expand"></i>
+            </div>
+        </div>
+        <textarea id="code-area" class="code-area">def solve():
+      # Write your code here</textarea>
+    </div>
+    <div class="output-card">
+        <h4>Program Output:</h4>
+        <pre id="code-result"></pre>
+    </div>
+    <div class="coding-actions">
+        <button type="button" class="btn-check" onclick="checkCode()">
+            <i class="fas fa-play"></i> Check Code
+        </button>
+        <button type="button" class="btn-submit" onclick="submitCode()">
+            <i class="fas fa-cloud-upload-alt"></i> Submit
+        </button>
+    </div>
+  </section>
+  
+      <!-- Progress Section -->
+      <section id="progress" class="content-section">
+          <h2>Your Progress</h2>
+          <div class="progress-grid">
+              <div class="progress-chart">
+                  <h3>Skill Mastery</h3>
+                  <div class="chart-container">
+                      <!-- Chart implementation here -->
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Leaderboard Section -->
+      <section id="leaderboard" class="content-section">
+          <div class="leaderboard-header">
+              <h2><i class="fas fa-trophy"></i> Global Leaderboard</h2>
+              <div class="leaderboard-filters">
+                  <button class="filter-btn active" data-sort="xp">By XP</button>
+                  <button class="filter-btn" data-sort="solved">Problems Solved</button>
+                  <button class="filter-btn" data-sort="streak">Active Streak</button>
+              </div>
+          </div>
+          <div class="leaderboard-container">
+              <div class="leaderboard-columns">
+                  <span>Rank</span>
+                  <span>Coder</span>
+                  <span>XP</span>
+                  <span>Solved</span>
+                  <span>Progress</span>
+              </div>
+              <div class="leaderboard-entries">
+                  <!-- Leaderboard entries here -->
+              </div>
+          </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="content-section">
+        <div class="profile-header">
+            <h2><i class="fas fa-user-shield"></i> Profile Settings</h2>
+            <button class="btn-edit" onclick="toggleEditMode()">
+                <i class="fas fa-edit"></i> Edit Profile
+            </button>
+        </div>
+    
+        <div class="profile-container">
+            <!-- Personal Info Section -->
+            <div class="profile-section">
+                <h3><i class="fas fa-id-card"></i> Personal Information</h3>
+                <div class="profile-info">
+                    <div class="avatar-section">
+                        <div class="avatar-container">
+                            <img src="user.png" alt="Profile" class="profile-avatar">
+                            <input type="file" id="avatarUpload" hidden accept="image/*">
+                            <button class="avatar-edit" onclick="document.getElementById('avatarUpload').click()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="avatar-status">
+                            <div class="status-indicator online"></div>
+                            <span>Active Now</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label><i class="fas fa-signature"></i> Full Name</label>
+                            <input type="text" class="username" value="CodeMaster123" readonly style="color: black;">
+                        </div>
+                        <div class="info-item">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" value="coder@example.com" readonly>
+                        </div>
+                        <div class="info-item">
+                            <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                            <input type="text" value="San Francisco, CA" readonly>
+                        </div>
+                        <div class="info-item">
+                            <label><i class="fas fa-calendar-alt"></i> Member Since</label>
+                            <input type="text" value="January 2022" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Statistics Section -->
+            <div class="profile-section">
+                <h3><i class="fas fa-chart-pie"></i> Coding Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-code"></i>
+                        <div class="stat-info">
+                            <h4>Problems Solved</h4>
+                            <p>245</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <h4>Total Hours</h4>
+                            <p>156.5h</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <div class="stat-info">
+                            <h4>Current Streak</h4>
+                            <p>7 Days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Achievements Section -->
+            <div class="profile-section">
+                <h3><i class="fas fa-medal"></i> Achievements</h3>
+                <div class="badges-container">
+                    <div class="badge-card">
+                        <div class="badge-icon gold">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Python Expert</h4>
+                        <p>Solved 100+ Python challenges</p>
+                    </div>
+                    <div class="badge-card">
+                        <div class="badge-icon silver">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Fast Solver</h4>
+                        <p>90% solutions accepted on first try</p>
+                    </div>
+                    <div class="badge-card">
+                        <div class="badge-icon bronze">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <h4>Streak Master</h4>
+                        <p>30-day coding streak achieved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+    
+  </main>
+  
+  <!-- Load the student dashboard JS as a module -->
+  <script type="module" src="student_dashboard.js"></script>
+</body>
+</html>

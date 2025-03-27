@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institute Dashboard</title>
+  <link rel="stylesheet" href="institute_dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar Menu -->
+    <div class="menu-bar">
+      <div class="logo">
+        <i class="fas fa-university" aria-hidden="true"></i>
+        <span>Institute</span>
+      </div>
+      <ul class="menu-items">
+        <li data-content-id="faculty">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>Faculty Information</span>
+        </li>
+        <li data-content-id="student">
+          <i class="fas fa-user-graduate"></i>
+          <span>Student Information</span>
+        </li>
+        <li data-content-id="branch">
+          <i class="fas fa-code-branch"></i>
+          <span>Branch</span>
+        </li>
+        <li data-content-id="challenges">
+          <i class="fas fa-tasks"></i>
+          <span>Challenges</span>
+        </li>
+        <li data-content-id="profile">
+          <i class="fas fa-user-circle"></i>
+          <span>Profile</span>
+        </li>
+      </ul>
+      <div class="sign-out" onclick="signOut()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Faculty Section -->
+      <div id="faculty" class="content hidden">
+        <h2>Faculty Information</h2>
+        <div class="faculty-cards">
+          <!-- Faculty cards will be loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Student Section -->
+      <div id="student" class="content hidden">
+        <div class="section-header">
+          <h2>Student Information</h2>
+          <div class="student-count" id="studentCount">Total Students: 0</div>
+        </div>
+        <div class="filter-section">
+          <label for="studentBranchFilter">Filter by Branch:</label>
+          <select id="studentBranchFilter" onchange="filterStudents()">
+            <option value="">All Branches</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+          </select>
+        </div>
+        <div class="student-cards">
+          <!-- Student cards will be loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Branch Section -->
+      <div id="branch" class="content hidden">
+        <h2>Branches</h2>
+        <div class="branch-cards">
+          <!-- Branch cards will be loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Challenges Section -->
+      <div id="challenges" class="content hidden">
+        <div class="challenge-form">
+          <h3>Create a New Challenge</h3>
+          <form id="challengeForm">
+            <div class="form-group">
+              <label for="language">Programming Language</label>
+              <select id="language" required>
+                <option value="">Select Language</option>
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C++">C++</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="difficulty">Difficulty Level</label>
+              <select id="difficulty" required>
+                <option value="">Select Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="title">Question Title</label>
+              <input type="text" id="title" placeholder="Enter question title" required />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" placeholder="Enter question description" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="input">Input</label>
+              <textarea id="input" placeholder="Enter expected input format" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="output">Output</label>
+              <textarea id="output" placeholder="Enter expected output format" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit Challenge</button>
+          </form>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+          <h3>Download Question Database</h3>
+          <div class="form-group">
+            <label for="filterLanguage">Select Programming Language</label>
+            <select id="filterLanguage">
+              <option value="">All Languages</option>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+            </select>
+          </div>
+          <button id="downloadBtn" class="btn-download">Download Questions Database (Word)</button>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+      <div id="profile" class="content hidden">
+        <h2>Profile</h2>
+        <div class="profile-container">
+          <div class="profile-card">
+            <div class="profile-photo">
+              <img src="https://via.placeholder.com/150" alt="Profile Photo" />
+            </div>
+            <div class="profile-details">
+              <h3>John Doe</h3>
+              <p><strong>Email:</strong> john.doe@example.com</p>
+              <p><strong>Role:</strong> Faculty</p>
+              <p><strong>Department:</strong> Computer Science</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End main-content -->
+  </div><!-- End dashboard-container -->
+
+  <!-- Popup Modal for Successful Submission -->
+  <div id="submissionPopup" class="popup hidden">
+    <div class="popup-content">
+      <p>Challenge Submitted Successfully!</p>
+      <button class="btn-popup" onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <!-- Load the Institute Dashboard JavaScript as a module -->
+  <script type="module" src="institute_dashboard.js"></script>
+</body>
+</html>
