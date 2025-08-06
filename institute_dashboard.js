@@ -1,4 +1,4 @@
-// instdashboard.js - Institute Dashboard JS (ES Module)
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
 
@@ -17,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Show content sections based on menu click.
 window.showContent = function(contentId) {
   document.querySelectorAll('.content').forEach(section => {
     section.classList.add('hidden');
@@ -33,16 +32,16 @@ window.showContent = function(contentId) {
   }
 };
 
-// Sign-out function.
+
 window.signOut = function() {
-  // Clear the user session data.
+ 
   localStorage.removeItem('user');
-  // Redirect to the login page.
+ 
   window.location.href = 'first_page.html';
 };
 
 
-// Faculty Section: Load faculty cards from DB.
+
 window.loadFacultyCards = function() {
   const container = document.querySelector('.faculty-cards');
   if (container) {
@@ -71,7 +70,6 @@ window.loadFacultyCards = function() {
   }
 };
 
-// Student Section: Load student cards.
 window.studentData = [];
 window.fetchStudentData = function(callback) {
   const studentRef = ref(database, "students");
@@ -133,7 +131,7 @@ window.filterStudents = function() {
   window.renderStudentCards(window.studentData, filterValue);
 };
 
-// Branch Section: For demo, static branch cards.
+
 window.loadBranchCards = function() {
   const container = document.querySelector('.branch-cards');
   if (container) {
@@ -156,7 +154,7 @@ window.loadBranchCards = function() {
   }
 };
 
-// Notification Section.
+
 window.loadNotificationData = function() {
   const list = document.getElementById('request-list');
   if (list) {
@@ -164,7 +162,6 @@ window.loadNotificationData = function() {
   }
 };
 
-// Profile Section.
 window.loadProfileData = function() {
   const userData = JSON.parse(localStorage.getItem('user'));
   if (userData && userData.role === 'faculty') {
@@ -186,16 +183,15 @@ window.loadProfileData = function() {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Attach event listeners for menu items.
+  
   document.querySelectorAll('.menu-items li').forEach(item => {
     item.addEventListener('click', function () {
       const contentId = this.getAttribute('data-content-id');
       window.showContent(contentId);
     });
   });
-  // Load default section.
+
   window.showContent('faculty');
   window.loadFacultyCards();
-  
-  // Challenge form submission, download, etc., can be implemented here.
+ 
 });
