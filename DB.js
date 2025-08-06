@@ -8,7 +8,7 @@ admin.initializeApp({
 
 const db = admin.database();
 
-// Define the updates you want to make. This example sets a student record with an empty solvedPerLanguage object.
+
 const updates = {
   "students/PRN002": {
     fullName: "Sandesh Yelameli",
@@ -18,15 +18,8 @@ const updates = {
     total_line_written: 0,
     timeSpent: 0,
     solvedChallenges: 0,
-    solvedPerLanguage: {}   // Initially no solved challenges for any language.
-  }/*,
-  "faculty/FAC001": {
-    fullName: "suraj pawar",
-    password: "1234",
-    branch: "Mechanical Engineering",
-    photo: "https://example.com/photos/charlie.jpg",
-    subject: "Circuit Analysis"
-  }*/
+    solvedPerLanguage: {}   
+  }
 };
 
 db.ref().update(updates)
