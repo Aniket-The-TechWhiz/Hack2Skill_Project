@@ -1,4 +1,4 @@
-/* Programming Languages Section */
+
 .language-cards {
     display: flex;
     flex-wrap: wrap;
@@ -42,7 +42,6 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Responsive Design for Cards */
 @media (max-width: 768px) {
     .card {
         width: calc(50% - 20px);
@@ -55,7 +54,7 @@
     }
 }
 
-/* Challenges Section */
+
 #challenges {
     padding: 20px;
     background: #fff;
@@ -98,7 +97,7 @@
 #code-file {
     margin-bottom: 10px;
 }
-/* styles.css */
+
 :root {
     --sidebar-width: 250px;
     --primary-color: #2c3e50;
@@ -116,7 +115,7 @@ body {
     background: #f5f6fa;
 }
 
-/* Hamburger Menu */
+
 .hamburger {
     position: fixed;
     top: 20px;
@@ -128,7 +127,7 @@ body {
     display: none;
 }
 
-/* Side Navigation */
+
 .side-nav {
     position: fixed;
     left: 0;
@@ -178,7 +177,6 @@ body {
     background: #34495e;
 }
 
-/* Main Content */
 .main-content {
     margin-left: var(--sidebar-width);
     padding: 2rem;
@@ -190,7 +188,7 @@ body {
     margin-left: 0;
 }
 
-/* Sections */
+
 .content-section {
     display: none;
     animation: fadeIn 0.3s ease;
@@ -200,8 +198,7 @@ body {
     display: block;
 }
 
-/* Dashboard Section */
-/* Dashboard Header */
+
 .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -251,7 +248,7 @@ body {
     color: #17232f;
 }
 
-/* Dashboard Grid */
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -270,7 +267,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* Progress Graph */
+
 .progress-graph {
     display: flex;
     justify-content: space-around;
@@ -295,7 +292,7 @@ body {
     font-size: 0.9rem;
 }
 
-/* Goal Meter */
+
 .goal-meter {
     height: 20px;
     background: #ecf0f1;
@@ -319,7 +316,7 @@ body {
     font-size: 0.8rem;
 }
 
-/* Heatmap */
+
 .heatmap-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -338,7 +335,7 @@ body {
     background: #2ecc71;
 }
 
-/* Quick Actions */
+
 .action-buttons {
     display: grid;
     gap: 1rem;
@@ -369,7 +366,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Achievements */
+
 .achievements-scroll {
     display: flex;
     gap: 1rem;
@@ -993,7 +990,7 @@ input:checked + .slider:before {
     color: #28a745;
 }
 .challenge-card.solved {
-    background-color: #d4edda !important; /* light green background */
+    background-color: #d4edda !important; 
     pointer-events: none;
   }
   
