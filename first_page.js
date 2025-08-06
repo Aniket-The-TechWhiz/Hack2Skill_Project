@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Modal elements and debug logs
+  
   const loginBtn = document.getElementById('loginBtn');
   const loginModal = document.getElementById('loginModal');
   if (!loginBtn) {
@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("loginModal found:", loginModal);
   }
 
-  // Open modal when the navigation login button is clicked
+
   loginBtn.addEventListener('click', function() {
     console.log("loginBtn clicked");
     loginModal.style.display = 'block';
   });
 
-  // Modal functionality
+
   const closeModal = document.querySelector('.close');
   closeModal.addEventListener('click', function() {
     loginModal.style.display = 'none';
