@@ -1,6 +1,4 @@
-/* ======================================================================
-   General Styles
-   ====================================================================== */
+
    body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -8,17 +6,12 @@
     color: #333;
   }
   
-  /* ======================================================================
-     Dashboard Container & Layout
-     ====================================================================== */
+ 
   .dashboard-container {
     display: flex;
     height: 100vh;
   }
   
-  /* ======================================================================
-     Sidebar Menu
-     ====================================================================== */
   .menu-bar {
     width: 250px;
     background: linear-gradient(135deg, #2c3e50, #34495e);
@@ -90,10 +83,7 @@
     margin-right: 10px;
     font-size: 1.2rem;
   }
-  
-  /* ======================================================================
-     Main Content Area & Animation
-     ====================================================================== */
+
   .main-content {
     flex: 1;
     padding: 20px;
@@ -119,9 +109,7 @@
     }
   }
   
-  /* ======================================================================
-     Responsive Design
-     ====================================================================== */
+
   @media (max-width: 768px) {
     .menu-bar {
       width: 100%;
@@ -154,17 +142,14 @@
   
   @media (max-width: 480px) {
     .menu-bar ul li {
-      flex: 1 1 100%; /* Stack items vertically on very small screens */
+      flex: 1 1 100%;
     }
   
     #challenge-cards {
-      grid-template-columns: 1fr; /* Single column on small screens */
+      grid-template-columns: 1fr;
     }
   }
-  
-  /* ======================================================================
-     Request Box Styling (Notifications)
-     ====================================================================== */
+ 
   .request-box {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -231,9 +216,7 @@
     background-color: #c82333;
   }
   
-  /* ======================================================================
-     Challenge Form & Download Section Styling
-     ====================================================================== */
+
   .challenge-form,
   .download-section {
     background: #ffffff;
@@ -250,8 +233,7 @@
     margin-bottom: 20px;
     color: #2c3e50;
   }
-  
-  /* Form Group Styling */
+
   .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -317,9 +299,7 @@
     background-color: #0069d9;
   }
   
-  /* ======================================================================
-     Popup Modal Styling
-     ====================================================================== */
+  
   .popup {
     position: fixed;
     top: 0;
@@ -361,9 +341,7 @@
     background-color: #218838;
   }
   
-  /* ======================================================================
-     Faculty Cards Styling
-     ====================================================================== */
+
   .faculty-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -397,7 +375,7 @@
     object-fit: cover;
   }
   
-  /* Profile Icon on Faculty Cards */
+
   .profile-icon {
     position: absolute;
     top: 10px;
@@ -432,10 +410,7 @@
   .faculty-details p strong {
     color: #333;
   }
-  
-  /* ======================================================================
-     Student Cards Styling
-     ====================================================================== */
+
   .student-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -495,8 +470,7 @@
   .student-details p strong {
     color: #333;
   }
-  
-  /* Profile Icon on Student Cards */
+
   .profile-icon {
     position: absolute;
     top: 10px;
@@ -511,9 +485,7 @@
     color: #2980b9;
   }
   
-  /* ======================================================================
-     Branch Cards Styling
-     ====================================================================== */
+
   .branch-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -558,9 +530,6 @@
     font-weight: bold;
   }
   
-  /* ======================================================================
-     Profile Section Styling
-     ====================================================================== */
   .profile-container {
     max-width: 600px;
     margin: 30px auto;
@@ -607,9 +576,7 @@
     margin: 5px 0;
   }
   
-  /* ======================================================================
-     New Additions: Section Header & Filter for Student Info
-     ====================================================================== */
+
   .section-header {
     display: flex;
     justify-content: space-between;
